@@ -4,7 +4,7 @@ function rottenTomatoes(grid) {
 
   // A function of getting the grid item
   function getGridItem(row, column) {
-    return grid[parseInt(row)][parseInt(column)];
+    return grid[row][column];
   }
 
   // Initializing the time
@@ -27,9 +27,7 @@ function rottenTomatoes(grid) {
 
   // Function for checking for the occurence of an array in another array
   function checkForArray(parentArray, childArray) {
-    const child = JSON.stringify(childArray);
-
-    let contains = parentArray.some((point) => JSON.stringify(point) === child);
+    let contains = parentArray.some((point) => point === childArray);
 
     return contains;
   }
@@ -39,11 +37,8 @@ function rottenTomatoes(grid) {
     const [row, column] = position;
 
     const topAdjacent = row === 0 ? false : [row - 1, column];
-
     const rightAdjacent = column === columnSize - 1 ? false : [row, column + 1];
-
     const bottomAdjacent = row === rowSize - 1 ? false : [row + 1, column];
-
     const leftAdjacent = column === 0 ? false : [row, column - 1];
 
     return [topAdjacent, rightAdjacent, bottomAdjacent, leftAdjacent].filter(
